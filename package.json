@@ -2,10 +2,10 @@
   "name": "mouse-gamers",
   "version": "0.0.1",
   "description": "update mouse players' stats",
-  "main": "dist/index.js",
+  "main": "dist/UpdateRanks.js",
   "scripts": {
-    "start": "tsc && node -r dotenv/config dist/index.js",
-    "dev": "ts-node-dev -r dotenv/config src/index.ts",
+    "start": "tsc && node -r dotenv/config dist/UpdateRanks.js",
+    "dev": "ts-node-dev -r dotenv/config src/UpdateRanks.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": " GPL-3.0-or-later",
@@ -20,6 +20,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@google-cloud/firestore": "^4.10.1",
     "axios": "^0.21.1"
   }
 }

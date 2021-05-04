@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Firestore } from "@google-cloud/firestore";
 
 async function getAuth(): Promise<{ access_token: string } | null> {
   try {
@@ -20,7 +21,7 @@ async function getAuth(): Promise<{ access_token: string } | null> {
   }
 }
 
-async function getUser(token: string, userID: string): Promise<any> {
+async function getUserData(token: string, userID: string): Promise<any> {
   try {
     // request for user
     const res = await axios({
@@ -35,15 +36,11 @@ async function getUser(token: string, userID: string): Promise<any> {
   }
 }
 
-async function main() {
-  const token = await getAuth();
-  if (!token || Object.keys(token).length === 0)
-    return console.error("no token");
-
-  const user = await getUser(token.access_token, "3607337");
-  console.log(user["statistics"]);
-  console.log(user["statistics"]["pp"]);
-  console.log(user["statistics"]["global_rank"]);
+function getDB(): Firestore {
+  return new Firestore({
+    projectId: process.env.GOOGLE_APPLICATION_ID,
+    keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
+  });
 }
 
-main();
+export { getAuth, getUserData, getDB };
