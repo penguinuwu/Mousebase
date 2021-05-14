@@ -6,6 +6,8 @@
   "scripts": {
     "start": "tsc && node -r dotenv/config dist/UpdateRanks.js",
     "dev": "ts-node-dev -r dotenv/config src/UpdateRanks.ts",
+    "clean": "rm -rf dest",
+    "upload": "tsc && node -r dotenv/config dist/UploadData.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": " GPL-3.0-or-later",
