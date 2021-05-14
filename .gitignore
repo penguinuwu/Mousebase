@@ -114,3 +114,11 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Credential files
+keys/
+
+# Data files for parsing
+**/csv_parser/**/*.csv
+**/csv_parser/**/*.tsv
+**/csv_parser/*.json
