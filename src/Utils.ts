@@ -9,8 +9,8 @@ async function getAuth(): Promise<{ access_token: string } | null> {
       url: "https://osu.ppy.sh/oauth/token",
       data: {
         grant_type: "client_credentials",
-        client_id: Number(process.env.CLIENT_ID),
-        client_secret: process.env.CLIENT_SECRET,
+        client_id: Number(process.env.OSU_CLIENT_ID),
+        client_secret: process.env.OSU_CLIENT_SECRET,
         scope: "public"
       }
     });
