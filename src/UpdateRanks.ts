@@ -18,19 +18,17 @@ async function updateRanks() {
     // https://osu.ppy.sh/docs/index.html?javascript#user
     const userData = await getUserData(token.access_token, user.id);
 
-    console.log(`updating ${user.id}`);
-
     // no need to await for set data
     if (!userData) {
       // if data does not exist, this player is probably banned
-      user.ref.set({
+      user.ref.update({
         is_banned: true,
         pp: 0,
         rank: null
       });
     } else {
       // update user name, pp, rank
-      user.ref.set({
+      user.ref.update({
         is_banned: false,
         name: `${userData["username"]}`,
         pp: parseInt(userData["statistics"]["pp"]) || 0,
